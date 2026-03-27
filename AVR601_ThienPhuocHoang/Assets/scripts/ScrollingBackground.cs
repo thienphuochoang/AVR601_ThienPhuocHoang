@@ -26,10 +26,9 @@ public class ScrollingBackground : MonoBehaviour
     {
         foreach (Transform t in tiles)
         {
-            // Move both tiles down
+            // Move both backgrounds down
             t.Translate(Vector2.down * scrollSpeed * Time.deltaTime);
-
-            // If a tile has scrolled fully off the bottom, jump it to the top
+            
             if (t.position.y < -spriteHeight)
             {
                 float highestY = Mathf.Max(tiles[0].position.y, tiles[1].position.y);
