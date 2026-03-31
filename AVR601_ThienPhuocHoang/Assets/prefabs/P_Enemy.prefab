@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3418863570866179229}
   - component: {fileID: 6877978879123193559}
   - component: {fileID: 5257994432453361650}
+  - component: {fileID: 4674519766423926920}
   m_Layer: 0
   m_Name: P_Enemy
   m_TagString: Untagged
@@ -102,5 +103,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   sidewaysSpeed: 1.5
-  swoopAmount: 2
   changeDirectionTime: 2
+--- !u!50 &4674519766423926920
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470220314824651892}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
