@@ -8,6 +8,9 @@ public class EnemyHealth : MonoBehaviour
     private int currentHealth;
     public Image[] hpDots;
 
+    [Header("VFX")]
+    public GameObject explosionPrefab;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -36,7 +39,11 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Enemy Dead");
+        // Spawn explosion at enemy position
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 }
