@@ -88,6 +88,7 @@ public class PlayerController : MonoBehaviour
         if (bulletPrefab != null && firePoint != null)
         {
             Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+            AudioManager.Instance.PlayShoot();
         }
     }
 
@@ -121,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player Dead");
+        GameManager.Instance.GameOver();
         gameObject.SetActive(false);
     }
 }

@@ -39,11 +39,11 @@ public class EnemyHealth : MonoBehaviour
 
     void Die()
     {
-        // Spawn explosion at enemy position
         if (explosionPrefab != null)
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
+        AudioManager.Instance.PlayExplosion();
         Destroy(gameObject);
     }
 }
