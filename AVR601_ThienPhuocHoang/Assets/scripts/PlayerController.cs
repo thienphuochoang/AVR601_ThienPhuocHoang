@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -8,6 +9,17 @@ public class PlayerController : MonoBehaviour
 
     [Header("Boundaries")]
     public SpriteRenderer backgroundSprite;
+
+    [Header("Health")]
+    public int maxHealth = 5;
+    private int currentHealth;
+    public Image[] hpDots;
+
+    [Header("Shooting")]
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireRate = 0.3f;
+    private float nextFireTime = 0f;
 
     private Rigidbody2D rb;
     private Vector2 movement;
@@ -24,7 +36,6 @@ public class PlayerController : MonoBehaviour
 
         if (backgroundSprite != null)
         {
-            // X: stay inside background width
             Bounds bg = backgroundSprite.bounds;
             minX = bg.min.x + shipHalfWidth;
             maxX = bg.max.x - shipHalfWidth;
@@ -36,9 +47,11 @@ public class PlayerController : MonoBehaviour
             maxX =  camWidth - shipHalfWidth;
         }
 
-        // Y: always use camera visible area (background is taller due to scrolling)
         minY = -camHeight + shipHalfHeight;
         maxY =  camHeight - shipHalfHeight;
+
+        currentHealth = maxHealth;
+        UpdateDots();
     }
 
     void Update()
@@ -51,6 +64,13 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.wKey.isPressed || Keyboard.current.upArrowKey.isPressed)    v =  1f;
 
         movement = new Vector2(h, v).normalized;
+
+        // Auto shoot
+        if (Time.time >= nextFireTime)
+        {
+            Shoot();
+            nextFireTime = Time.time + fireRate;
+        }
     }
 
     void FixedUpdate()
@@ -61,5 +81,47 @@ public class PlayerController : MonoBehaviour
         newPos.y = Mathf.Clamp(newPos.y, minY, maxY);
 
         rb.MovePosition(newPos);
+    }
+
+    void Shoot()
+    {
+        if (bulletPrefab != null && firePoint != null)
+        {
+            Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            TakeDamage(1);
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        UpdateDots();
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void UpdateDots()
+    {
+        for (int i = 0; i < hpDots.Length; i++)
+        {
+            hpDots[i].enabled = i < currentHealth;
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Player Dead");
+        gameObject.SetActive(false);
     }
 }
