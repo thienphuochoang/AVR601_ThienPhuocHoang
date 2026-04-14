@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8495489878677267828}
   m_Layer: 0
   m_Name: P_Projectile_02
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,3 +175,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110bfb5a5333e874c9c55658fc3ea6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 5
+  damage: 1

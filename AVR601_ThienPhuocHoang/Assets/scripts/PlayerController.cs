@@ -98,6 +98,10 @@ public class PlayerController : MonoBehaviour
         {
             TakeDamage(1);
         }
+        else if (other.CompareTag("Meteor"))
+        {
+            TakeDamage(1);
+        }
     }
 
     public void TakeDamage(int damage)

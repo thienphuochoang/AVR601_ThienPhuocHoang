@@ -18,6 +18,11 @@ public class EnemyProjectile : MonoBehaviour
             other.GetComponent<PlayerController>()?.TakeDamage(damage);
             Destroy(gameObject);
         }
+        else if (other.CompareTag("Meteor"))
+        {
+            other.GetComponent<Meteor>()?.TakeDamage();
+            Destroy(gameObject);
+        }
     }
 
     void OnBecameInvisible()

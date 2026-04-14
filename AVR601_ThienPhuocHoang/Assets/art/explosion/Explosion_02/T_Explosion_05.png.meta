@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2aef53d093e0b9e4b939e1545399a7b9
+guid: 74cf5a4fcffa3354fad10e5bf1dbd11a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7107167437204270733
-    second: Meteor_03_0
+      213: 8788205569318414792
+    second: Explosion_005_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Meteor_03_0
+      name: Explosion_005_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 300
-        height: 300
+        x: 206
+        y: 41
+        width: 521
+        height: 522
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 371573a0fd44e5d90800000000000000
-      internalID: -7107167437204270733
+      spriteID: 8c96554476af5f970800000000000000
+      internalID: 8788205569318414792
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Meteor_03_0: -7107167437204270733
+      Explosion_005_0: 8788205569318414792
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -11,6 +11,9 @@ public class EnemyHealth : MonoBehaviour
     [Header("VFX")]
     public GameObject explosionPrefab;
 
+    [Header("Score")]
+    public int scoreValue = 100;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -44,6 +47,7 @@ public class EnemyHealth : MonoBehaviour
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         }
         AudioManager.Instance.PlayExplosion();
+        GameManager.Instance.AddScore(scoreValue);
         Destroy(gameObject);
     }
 }
